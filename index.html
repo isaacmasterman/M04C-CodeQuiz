@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+    <header>
+        <button id="highscores-btn"> View Highscores </button>
+        <div id="timer">Time: 75</div>
+    </header>
+    
+    <section id="quiz-intro">
+        <h1> Coding Quiz Challenge </h1>
+        <p> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds! </p>
+        <button id="start-quiz-btn">Start Quiz</button>
+    </section>
+
+    <section id="quiz-questions" style="display: none;">
+        <!-- Question 1 -->
+        <div class="question">
+            <h3>Commonly used data types DO NOT include:</h3>
+            <ul>
+                <li><button>Strings</button></li>
+                <li><button>Booleans</button></li>
+                <li><button>Alerts</button></li>
+                <li><button>Numbers</button></li>
+            </ul>
+        </div>
+    
+        <!-- Question 2 -->
+        <div class="question">
+            <h3>The conditions in an if / else statement is enclosed within ____.</h3>
+            <ul>
+                <li><button>Quotes</button></li>
+                <li><button>Curly brackets</button></li>
+                <li><button>Parentheses</button></li>
+                <li><button>Square brackets</button></li>
+            </ul>
+        </div>
+    
+        <!-- Question 3 -->
+        <div class="question">
+            <h3>Arrays in JavaScript can be used to store ___.</h3>
+            <ul>
+                <li><button>Numbers and strings</button></li>
+                <li><button>Other arrays</button></li>
+                <li><button>Booleans</button></li>
+                <li><button>All of the above</button></li>
+            </ul>
+        </div>
+    
+        <!-- Question 4 -->
+        <div class="question">
+            <h3>String values must be enclosed within ___ when being assigned to variables.</h3>
+            <ul>
+                <li><button>Commas</button></li>
+                <li><button>Curly brackets</button></li>
+                <li><button>Quotes</button></li>
+                <li><button>Parentheses</button></li>
+            </ul>
+        </div>
+    
+        <!-- Question 5 -->
+        <div class="question">
+            <h3>A very useful tool used during development and debugging for printing content to the debugger is:</h3>
+            <ul>
+                <li><button>JavaScript</button></li>
+                <li><button>Terminal/bash</button></li>
+                <li><button>For loops</button></li>
+                <li><button>Console log</button></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="end-of-quiz" style="display: none;">
+        <h3>Quiz Completed!</h3>
+        <p>Your final score is: <span id="final-score"></span></p>
+    
+        <label for="user-initials">Enter your initials:</label>
+        <input type="text" id="user-initials" maxlength="3" placeholder="XYZ">
+    
+        <button id="save-score">Save Score</button>
+    </section>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
