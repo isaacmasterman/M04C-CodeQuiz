@@ -1,0 +1,116 @@
+/* Variable Colors */
+:root {
+    --purple: #7E46AF;
+    --white: #F2F4F3;
+    --black: #242325;
+    --hover: #A67CCB;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--white);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: var(--white);
+}
+
+#highscores-btn {
+    color: var(--purple);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#timer {
+    color: var(--black);
+}
+
+/* Quiz Intro Section */
+#quiz-intro {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#quiz-intro h1, 
+#quiz-intro p {
+    color: var(--black);
+    padding: 0 60px;
+}
+
+#start-quiz-btn {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-quiz-btn:hover {
+    background-color: var(--hover);
+}
+
+/* Quiz Questions Section */
+.question h3 {
+    color: var(--black);
+    margin-top: 20px;
+}
+
+.question ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.question li {
+    margin: 10px 0;
+}
+
+.question button {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.question button:hover {
+    background-color: var(--hover)
+}
+
+/* End of Quiz Section */
+#end-of-quiz h3 {
+    color: var(--black);
+    text-align: center;
+    margin-top: 20px;
+}
+
+#end-of-quiz p {
+    color: var(--black);
+    text-align: center;
+}
+
+#save-score {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto 0;
+}
+
+#save-score:hover {
+    background-color: var(--hover)
+}
