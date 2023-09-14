@@ -38,10 +38,16 @@ header {
     margin-top: 50px;
 }
 
-#quiz-intro h1, 
+#quiz-intro h1 {
+    color: var(--black);
+    padding: 0 60px;
+    font-size: 36px;
+}
+ 
 #quiz-intro p {
     color: var(--black);
-    padding: 5px 60px;
+    padding: 15px 350px;
+    font-size: 24px;
 }
 
 #start-quiz-btn {
@@ -59,21 +65,29 @@ header {
 }
 
 /* Quiz Questions Section */
-.question h3 {
+#quiz-questions .question {
+    width: 50%;
+    margin: 50px auto;
+    text-align: left;
+}
+
+#quiz-questions .question h3 {
     color: var(--black);
     margin-top: 20px;
 }
 
-.question ul {
+#quiz-questions .question ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    text-align: left;
 }
 
-.question li {
+#quiz-questions .question li {
     margin: 10px 0;
 }
 
-.question button {
+#quiz-questions .question button {
     background-color: var(--purple);
     color: var(--white);
     padding: 10px 20px;
@@ -81,11 +95,13 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: inline-block;
 }
 
-.question button:hover {
+#quiz-questions .question button:hover {
     background-color: var(--hover)
 }
+
 
 /* End of Quiz Section */
 #end-of-quiz h3 {
@@ -115,4 +131,10 @@ header {
 
 #save-score:hover {
     background-color: var(--hover)
+}
+
+@media (max-width: 1200px) {
+    #quiz-intro p {
+        padding: 15px 60px;
+    }
 }
