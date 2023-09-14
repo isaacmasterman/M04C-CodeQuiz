@@ -142,6 +142,32 @@ function endQuiz() {
     endOfQuizSection.style.display = "block";
 }
 
+// Function to reset the quiz
+function resetQuiz() {
+    currentQuestionIndex = 0;
+    timeLeft = 75;
+    timerDisplay.textContent = "Time: " + timeLeft;
+    document.getElementById("quiz-intro").style.display = "block";
+    document.getElementById("highscores-section").style.display = "none";
+    endOfQuizSection.style.display = "none";
+    questionsSection.style.display = "none";
+}
+
+// Function to display highscores
+function displayHighscores() {
+    endOfQuizSection.style.display = "none";
+    const highscoresSection = document.getElementById("highscores-section");
+    const highscoresList = document.getElementById("highscores-list");
+    highscoresList.innerHTML = '';
+    const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    highscores.forEach((entry, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${entry.initials} - ${entry.score}`;
+        highscoresList.appendChild(listItem);
+    });
+    highscoresSection.style.display = "block";
+}
+
 // Event listener for the "Start Quiz" button
 startQuizButton.addEventListener("click", function() {
     document.getElementById("quiz-intro").style.display = "none";
@@ -161,21 +187,10 @@ document.getElementById("save-score").addEventListener("click", function() {
     }
 });
 
-function displayHighscores() {
-    endOfQuizSection.style.display = "none";
-    const highscoresSection = document.getElementById("highscores-section");
-    const highscoresList = document.getElementById("highscores-list");
-    highscoresList.innerHTML = '';
-    const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-    highscores.forEach((entry, index) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${index + 1}. ${entry.initials} - ${entry.score}`;
-        highscoresList.appendChild(listItem);
-    });
-    highscoresSection.style.display = "block";
-}
-
+// Event listener for the highscores page
 document.getElementById("highscores-btn").addEventListener("click", displayHighscores);
+
+document.getElementById("go-back-btn").addEventListener("click", resetQuiz);
 
 document.getElementById("go-back-btn").addEventListener("click", function() {
     document.getElementById("highscores-section").style.display = "none";
