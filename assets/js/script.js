@@ -72,7 +72,7 @@ function displayQuestion(index) {
 
         questionDiv.appendChild(choicesList);
         // Create feedback div for the current question
-        const feedbackDiv = document.createElement("div");
+        let feedbackDiv = document.createElement("div");
         feedbackDiv.className = "feedback";
         feedbackDiv.style.display = "none";
         questionDiv.appendChild(feedbackDiv);
@@ -86,16 +86,19 @@ function displayQuestion(index) {
 // Function to handle answer selection
 function handleAnswerSelection(event) {
     event.stopPropagation();
-    // console.log("Answer button clicked");
-    const selectedButton = event.target;
-    const correctAnswer = questions[currentQuestionIndex].answer;
-    const feedbackDiv = selectedButton.closest(".question").querySelector(".feedback");
+    console.log("Answer button clicked");
+    let selectedButton = event.target;
+    let correctAnswer = questions[currentQuestionIndex].answer;
+    let feedbackDiv = selectedButton.closest(".question").querySelector(".feedback");
 
     // Check if the selected answer is correct
+    console.log(feedbackDiv)
     if (selectedButton.textContent !== correctAnswer) {
         timeLeft -= 10;
+        console.log("Wrong");
         feedbackDiv.textContent = "Wrong!";
     } else {
+        console.log("Correct!");
         feedbackDiv.textContent = "Correct!";
     }
 
@@ -103,7 +106,7 @@ function handleAnswerSelection(event) {
     feedbackDiv.style.display = "block";
     setTimeout(() => {
         feedbackDiv.style.display = "none";
-    }, 8000);
+    }, 1000);
 
     // Move to the next question
     currentQuestionIndex++;
@@ -144,4 +147,42 @@ startQuizButton.addEventListener("click", function() {
     document.getElementById("quiz-intro").style.display = "none";
     startTimer();
     console.log("Start Quiz button clicked");
+});
+
+// Event listener for the "Save Score" button
+document.getElementById("save-score").addEventListener("click", function() {
+    const initials = document.getElementById("user-initials").value;
+    if (initials) {
+        const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+        highscores.push({ initials, score: timeLeft });
+        highscores.sort((a, b) => b.score - a.score);
+        localStorage.setItem("highscores", JSON.stringify(highscores));
+        displayHighscores();
+    }
+});
+
+function displayHighscores() {
+    endOfQuizSection.style.display = "none";
+    const highscoresSection = document.getElementById("highscores-section");
+    const highscoresList = document.getElementById("highscores-list");
+    highscoresList.innerHTML = '';
+    const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    highscores.forEach((entry, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${entry.initials} - ${entry.score}`;
+        highscoresList.appendChild(listItem);
+    });
+    highscoresSection.style.display = "block";
+}
+
+document.getElementById("highscores-btn").addEventListener("click", displayHighscores);
+
+document.getElementById("go-back-btn").addEventListener("click", function() {
+    document.getElementById("highscores-section").style.display = "none";
+    document.getElementById("quiz-intro").style.display = "block";
+});
+
+document.getElementById("clear-highscores-btn").addEventListener("click", function() {
+    localStorage.removeItem("highscores");
+    displayHighscores();
 });
