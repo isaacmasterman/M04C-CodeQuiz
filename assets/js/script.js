@@ -43,9 +43,8 @@ let currentQuestionIndex = 0;
 
 // Function to display a question
 function displayQuestion(index) {
-    // Clear the questions section
+
     questionsSection.innerHTML = '';
-    // Ensure the questions section is visible
     questionsSection.style.display = "block";
     // Check if there are more questions
     if (index < questions.length) {
@@ -67,11 +66,17 @@ function displayQuestion(index) {
             choiceButton.addEventListener("click", handleAnswerSelection);
             choiceItem.appendChild(choiceButton);
             choicesList.appendChild(choiceItem);
-    console.log("Displaying question:", index);
-    console.log("Current question:", currentQuestion);
+    // console.log("Displaying question:", index);
+    // console.log("Current question:", currentQuestion);
         });
 
         questionDiv.appendChild(choicesList);
+        // Create feedback div for the current question
+        const feedbackDiv = document.createElement("div");
+        feedbackDiv.className = "feedback";
+        feedbackDiv.style.display = "none";
+        questionDiv.appendChild(feedbackDiv);
+        
         questionsSection.appendChild(questionDiv);
     } else {
         endQuiz();
@@ -81,19 +86,29 @@ function displayQuestion(index) {
 // Function to handle answer selection
 function handleAnswerSelection(event) {
     event.stopPropagation();
-    console.log("Answer button clicked");
+    // console.log("Answer button clicked");
     const selectedButton = event.target;
     const correctAnswer = questions[currentQuestionIndex].answer;
+    const feedbackDiv = selectedButton.closest(".question").querySelector(".feedback");
 
     // Check if the selected answer is correct
     if (selectedButton.textContent !== correctAnswer) {
         timeLeft -= 10;
+        feedbackDiv.textContent = "Wrong!";
+    } else {
+        feedbackDiv.textContent = "Correct!";
     }
+
+    // Display feedback for 1 second
+    feedbackDiv.style.display = "block";
+    setTimeout(() => {
+        feedbackDiv.style.display = "none";
+    }, 8000);
 
     // Move to the next question
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
-    console.log("Answer selected:", selectedButton.textContent);
+    // console.log("Answer selected:", selectedButton.textContent);
 }
 
 // Modify the startTimer function to also display the first question
@@ -120,6 +135,7 @@ function allQuestionsAnswered() {
 function endQuiz() {
     clearInterval(timerInterval);
     questionsSection.style.display = "none";
+    document.getElementById("final-score").textContent = timeLeft;
     endOfQuizSection.style.display = "block";
 }
 

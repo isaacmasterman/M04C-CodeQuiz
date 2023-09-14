@@ -22,16 +22,18 @@
     </section>
     
     <section id="quiz-questions" style="display: none;">
+        <div id="feedback" style="display: none;"></div>
     </section>
     
     <section id="end-of-quiz" style="display: none;">
-        <h3>Quiz Completed!</h3>
-        <p>Your final score is: <span id="final-score"></span></p>
+        <h3>All done!</h3>
+        <p>Your final score is <span id="final-score"></span></p>
     
-        <label for="user-initials">Enter your initials:</label>
-        <input type="text" id="user-initials" maxlength="3" placeholder="XYZ">
-    
-        <button id="save-score">Save Score</button>
+        <div class="initials-container">
+            <label for="user-initials">Enter your initials:</label>
+            <input type="text" id="user-initials" maxlength="3" placeholder="XYZ">
+            <button id="save-score">Submit</button>
+        </div>
     </section>
 
     <script src="./assets/js/script.js"></script>
