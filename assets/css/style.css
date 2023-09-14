@@ -41,7 +41,7 @@ header {
 #quiz-intro h1, 
 #quiz-intro p {
     color: var(--black);
-    padding: 0 60px;
+    padding: 5px 60px;
 }
 
 #start-quiz-btn {
@@ -97,11 +97,13 @@ header {
 #end-of-quiz p {
     color: var(--black);
     text-align: center;
+    padding: 20px 60px;
 }
 
 #save-score {
     background-color: var(--purple);
     color: var(--white);
+    text-align: center;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
